@@ -35,7 +35,13 @@ pub static CONFIG: LazyLock<Mutex<SpMultiplierValues>> = LazyLock::new(|| {
         },
         Err(_) => {
             println!("failed to open the configuration file, generating a default one");
-            let multiplier = SpMultiplierValues::default();
+
+            let multiplier: SpMultiplierValues = SpMultiplierValues{
+                multiplier_emblem_ring : 2.0,
+                multiplier_bond_ring : 1.0,
+                multiplier_no_ring : 0.5,
+            };
+           
             // Save the configuration we just made
             multiplier.save();
             multiplier
